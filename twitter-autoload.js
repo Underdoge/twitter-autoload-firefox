@@ -6,8 +6,6 @@ var observer = new MutationObserver(function(mutations) {
    if(window.scrollY <= 10){
     mutation.target.getElementsByClassName('new-tweets-bar js-new-tweets-bar')[0].click();
    }
-   else
-    console.log('scroll at: '+window.scrollY);
  });    
 });
 

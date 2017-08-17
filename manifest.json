@@ -1,0 +1,22 @@
+{
+    
+      "manifest_version": 2,
+      "name": "twitter-autoload",
+      "version": "1.0",
+      "author": "Eduardo Chapa eduardo.chapa@gmail.com",
+    
+      "description": "Shows latest tweets when the scroll is all the way up.",
+    
+      "icons": {
+        "48": "icons/twitter-autoload-48.png",
+        "96": "icons/twitter-autoload-96.png"
+      },
+    
+      "content_scripts": [
+        {
+          "matches": ["*://*.twitter.com/"],
+          "js": ["twitter-autoload.js"]
+        }
+      ]
+    
+    }

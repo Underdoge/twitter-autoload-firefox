@@ -2,7 +2,7 @@
     
       "manifest_version": 2,
       "name": "twitter-autoload",
-      "version": "1.1.5",
+      "version": "1.1.6",
       "author": "Eduardo Chapa eduardo.chapa@gmail.com",
     
       "description": "Shows latest tweets when the scroll is all the way up.",
@@ -14,9 +14,8 @@
     
       "content_scripts": [
         {
-          "matches": ["*://*.twitter.com/"],
+          "matches": ["*://*.twitter.com/*"],
           "js": ["twitter-autoload.js"]
         }
       ]
-    
-    }
+}

@@ -1,17 +1,20 @@
-var target = document.getElementsByTagName('body');
+var target = document.body;
+var scrollPoss = window.scrollY;
 
 var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-        if(window.scrollY <= 10 && mutation.target.getElementsByClassName('new-tweets-bar js-new-tweets-bar').length > 0)
-            mutation.target.getElementsByClassName('new-tweets-bar js-new-tweets-bar')[0].click();
+        if (scrollPoss === 0 && window.scrollY > 0) {
+                 document.getElementsByClassName("css-1dbjc4n r-1awozwy r-sdzlij r-18u37iz r-1777fci r-dnmrzs r-1sp51qo r-o7ynqc r-6416eg")[0].click();
+                mutation.target.parentNode.click();
+                window.scrollTo(0,0);
+        }
     });
 });
 
-var config = { childList: true, subtree: true };
+var config = { childList: true, attributes: true, characterData: true, subtree: true };
 
-observer.observe(target[0], config);
+observer.observe(target, config);
 
 document.addEventListener('scroll', function(e) {
-    if (window.scrollY === 0 && document.getElementsByClassName('new-tweets-bar js-new-tweets-bar').length > 0)
-        document.getElementsByClassName('new-tweets-bar js-new-tweets-bar')[0].click();
+        scrollPoss = window.scrollY;
 });

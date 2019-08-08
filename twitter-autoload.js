@@ -1,13 +1,16 @@
 var target = document.body;
-var scrollPoss = window.scrollY;
+var scrollPos = window.scrollY;
 
 var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-        if (scrollPoss === 0 && window.scrollY > 0) {
-                 document.getElementsByClassName("css-1dbjc4n r-1awozwy r-sdzlij r-18u37iz r-1777fci r-dnmrzs r-1sp51qo r-o7ynqc r-6416eg")[0].click();
-                mutation.target.parentNode.click();
-                window.scrollTo(0,0);
+        if (scrollPos < window.scrollY && window.location.href.includes("twitter.com/home")) {
+                if (document.getElementsByClassName("css-1dbjc4n r-1awozwy r-sdzlij r-18u37iz r-1777fci r-dnmrzs r-1sp51qo r-o7ynqc r-6416eg").length > 0)
+                    document.getElementsByClassName("css-1dbjc4n r-1awozwy r-sdzlij r-18u37iz r-1777fci r-dnmrzs r-1sp51qo r-o7ynqc r-6416eg")[0].click();
+                if (document.getElementsByClassName("css-1dbjc4n r-1awozwy r-sdzlij r-18u37iz r-1777fci r-dnmrzs r-1bq9uc5 r-o7ynqc r-6416eg").length > 0)
+                    document.getElementsByClassName("css-1dbjc4n r-1awozwy r-sdzlij r-18u37iz r-1777fci r-dnmrzs r-1bq9uc5 r-o7ynqc r-6416eg")[0].click();
         }
+        if(window.scrollY <= 10 && mutation.target.getElementsByClassName('new-tweets-bar js-new-tweets-bar').length > 0)
+            mutation.target.getElementsByClassName('new-tweets-bar js-new-tweets-bar')[0].click();
     });
 });
 
@@ -16,5 +19,7 @@ var config = { childList: true, attributes: true, characterData: true, subtree: 
 observer.observe(target, config);
 
 document.addEventListener('scroll', function(e) {
-        scrollPoss = window.scrollY;
+    scrollPos = window.scrollY;
+    if (window.scrollY === 0 && document.getElementsByClassName('new-tweets-bar js-new-tweets-bar').length > 0)
+        document.getElementsByClassName('new-tweets-bar js-new-tweets-bar')[0].click();
 });
